@@ -1,7 +1,7 @@
 "use client"
 
 import Image from 'next/image'
-import React from 'react';
+import React, { useState } from 'react';
 import NavBarHome from '../components/navBarHome';
 import HomeSlider from '../components/homeSlider';
 import HomeFooter from '../components/homeFooter';
@@ -11,13 +11,14 @@ import '../styles/home.css';
 
 const slides = [
   {
-    image: '/images/HomePageImages/WorksInChaos/splash_image.png',
+    image: '/images/HomePageImages/physarum-polycephalum/background 2.PNG',
     title: ' 2025 Degree Show :physarum-polycephalum',
     secondaryTitle: '2025 WIP Show',
     buttons: [
-      { text: 'Degree Show', link: '/WorksInChaos' },
+      { text: 'Degree Show', link: '/physarum-polycephalum' },
       { text: 'WIP Show', link: '/WorksInChaos' },
-    ]
+    ],
+    className: 'image-2025'
   },
   {
     image: '/images/HomePageImages/FogRot2024/IMG_8606.JPG',
@@ -91,16 +92,13 @@ const slides = [
   // Add more here
 ];
 export default function HomePage() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
   return (
     <>
-      <NavBarHome /> {/* This ensures NavBarHome is at the top level */}
-      {/* <main className="flex min-h-screen flex-col items-center justify-between p-24"> */}
-      <HomeSlider slides={slides} />
+      <NavBarHome currentSlide={currentSlide} />
+      <HomeSlider slides={slides} onSlideChange={setCurrentSlide} />
       <HomeFooter />
-        {/* <Link href="/FogRot2024" rel="noopener noreferrer">
-          Fogrot page
-        </Link> */}
-      {/* </main> */}
     </>
   );
 }

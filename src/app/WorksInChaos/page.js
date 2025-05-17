@@ -41,7 +41,7 @@ const ImageCarousel = ({ images }) => {
                             alt={image.alt}
                             fill
                             className="object-contain rounded-lg shadow-xl"
-                            priority={index < 5} // Preload the first 3 pictures
+                            priority={index < 3} // Preload the first 3 pictures
                         />
                     </div>
                 );
